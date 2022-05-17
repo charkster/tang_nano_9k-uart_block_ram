@@ -34,7 +34,7 @@ module uart_rx
     logic stop_valid;
     logic timeout;
     
-    synchronizer u_synchronizer_cc1_pin_sync
+    synchronizer u_synchronizer
     ( .clk      (clk),    // input
       .rst_n    (rst_n),  // input
       .data_in  (rx),     // input
