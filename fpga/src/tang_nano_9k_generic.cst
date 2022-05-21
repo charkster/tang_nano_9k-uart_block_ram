@@ -6,6 +6,8 @@
 IO_LOC  "clk_27mhz"    52;
 IO_PORT "clk_27mhz"    IO_TYPE=LVCMOS33 BANK_VCCIO=3.3;
 
+// IO_LOC  "BUTTON_S1"    3;
+// IO_PORT "BUTTON_S1"    IO_TYPE=LVCMOS18;
 IO_LOC  "button_s1"    3;
 IO_PORT "button_s1"    IO_TYPE=LVCMOS18;
 // IO_LOC  "BUTTON_S2"    4;
@@ -24,16 +26,28 @@ IO_PORT "uart_rx"  IO_TYPE=LVCMOS33 BANK_VCCIO=3.3;
 // ALL LED pins are orange
 // IO_LOC  "LED_OR_1"     10;
 // IO_PORT "LED_OR_1"     IO_TYPE=LVCMOS18;
+IO_LOC  "led_1"     10;
+IO_PORT "led_1"     IO_TYPE=LVCMOS18;
 // IO_LOC  "LED_OR_2"     11;
 // IO_PORT "LED_OR_2"     IO_TYPE=LVCMOS18;
+IO_LOC  "led_2"     11;
+IO_PORT "led_2"     IO_TYPE=LVCMOS18;
 // IO_LOC  "LED_OR_3"     13;
 // IO_PORT "LED_OR_3"     IO_TYPE=LVCMOS18;
+IO_LOC  "led_3"     13;
+IO_PORT "led_3"     IO_TYPE=LVCMOS18;
 // IO_LOC  "LED_OR_4"     14;
 // IO_PORT "LED_OR_4"     IO_TYPE=LVCMOS18;
+IO_LOC  "led_4"     14;
+IO_PORT "led_4"     IO_TYPE=LVCMOS18;
 // IO_LOC  "LED_OR_5"     15;
 // IO_PORT "LED_OR_5"     IO_TYPE=LVCMOS18;
+IO_LOC  "led_5"     15;
+IO_PORT "led_5"     IO_TYPE=LVCMOS18;
 // IO_LOC  "LED_OR_6"     16;
 // IO_PORT "LED_OR_6"     IO_TYPE=LVCMOS18;
+IO_LOC  "led_6"     16;
+IO_PORT "led_6"     IO_TYPE=LVCMOS18;
 
 // SPI FLASH
 // IO_LOC  "FLASH_MCLK"   59;

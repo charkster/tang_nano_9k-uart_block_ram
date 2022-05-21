@@ -3,7 +3,13 @@ module uart_blockram_top (
   input  logic clk_27mhz,
   input  logic button_s1,
   input  logic uart_rx,
-  output logic uart_tx
+  output logic uart_tx,
+  output logic led_1,
+  output logic led_2,
+  output logic led_3,
+  output logic led_4,
+  output logic led_5,
+  output logic led_6
 //  output logic rx_buffer,
 //  output logic tx_buffer
 );
@@ -28,6 +34,9 @@ module uart_blockram_top (
   logic [7:0] write_data;
   logic [7:0] read_data;
   logic [7:0] block_ram_read_data;
+
+  logic        rx_bsy;
+  logic [25:0] led_counter;
 
   logic [NUM_ADDR_BYTES*8-1:0] address;
 
@@ -60,7 +69,7 @@ module uart_blockram_top (
     ( .clk           (clk_27mhz),        // input
       .rst_n         (rst_n_sync),       // input
       .rx            (uart_rx),          // input
-      .rx_bsy        (),                 // output
+      .rx_bsy,                           // output
       .block_timeout (rx_block_timeout), // output
       .data_valid    (rx_data_valid),    // output
       .data_out      (rx_data_out)       // output [7:0]
@@ -106,5 +115,19 @@ module uart_blockram_top (
 
   // first uart byte of data to send is an read_enable and slave_id, then requested read data will be sent
   assign send_data = (send_slave_id) ? {read_enable,slave_id} : read_data;
+
+  always_ff @(posedge clk_27mhz, negedge rst_n_sync)
+    if (~rst_n_sync)                        led_counter <= 'd0;
+    else if (rx_bsy && (led_counter == '0)) led_counter <= 'd1;
+    else if (led_counter > 'd0)             led_counter <= led_counter + 1; // overflow expected
+
+  always_comb begin
+    led_1 = (led_counter == 0);
+    led_2 = (led_counter < 'd10000000);
+    led_3 = (led_counter < 'd20000000);
+    led_4 = (led_counter < 'd30000000);
+    led_5 = (led_counter < 'd40000000);
+    led_6 = (led_counter < 'd50000000);
+  end
 
 endmodule
