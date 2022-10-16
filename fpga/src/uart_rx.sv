@@ -68,13 +68,13 @@ module uart_rx
       else if (!timeout)                                   rx_cnt <= rx_cnt + 1'b1; 
       else                                                 rx_cnt <= 'd0;
 
-    // this just stops the rx_cnt
+    // this just stops the rx_cnt, remains high until new data received
     always@(posedge clk, negedge rst_n)
       if (~rst_n)                                    timeout <= 1'b0;
       else if (frame_begin)                          timeout <= 1'b0;
       else if ((!rx_bsy) && (rx_cnt == BLK_TIMEOUT)) timeout <= 1'b1;
 
-    // this signals the end of block uart transfer
+    // this signals the end of block uart transfer, stays low after it pulses
     always@(posedge clk, negedge rst_n)
       if (~rst_n)                                    block_timeout <= 1'b0;
       else if ((!rx_bsy) && (rx_cnt == BLK_TIMEOUT)) block_timeout <= 1'b1;
