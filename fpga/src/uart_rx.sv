@@ -86,7 +86,7 @@ module uart_rx
       else if (frame_end) data_valid <= 1'b1;
       else                data_valid <= 1'b0;
 
-    // rx data control
+    // rx data control, no need to clear as data_valid is the qualifier
     always@(posedge clk, negedge rst_n)
       if (~rst_n)                   data_out[7:0] <= 8'd0;
       else if (rx_bsy) case(rx_cnt)
