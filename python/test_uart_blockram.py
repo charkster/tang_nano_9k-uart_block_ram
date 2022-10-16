@@ -19,7 +19,7 @@ for block in range(0,256):
 
 # read all values in the block ram using read requests of 32 bytes
 for block in range(0,256):
-	port.write(bytearray([129, (block*32)>>8, (block*32) & 0xFF, 32])) # request 32 bytes of read data
+	port.write(bytearray([129, (block*32)>>8, (block*32) & 0xFF, 32])) # request 32 bytes of read data, 129 dec is 0x81 read bit is msb, slave id is 1
 	time.sleep(0.0005) # this delay is needed to ensure that all data is received by the USB-UART before we read the USB-UART
 	response = port.read(33)
 	response_list = list(response)
