@@ -10,7 +10,7 @@ time.sleep(0.0005)
 list_w_rand = [random.randint(0,255) for _ in range(0,2 ** 13)]
 wrong_list  = [random.randint(0,255) for _ in range(0,2 ** 13)]
 
-# load the block ram with random data 32 bytes in a single bus cycle
+# load the block ram with random data 32 bytes in a single bus cycle, block size of 32 bytes is under USB UART read and write buffer limits
 for block in range(0,256):
 	write_list = [1, (block*32)>>8, (block*32) & 0xFF]    # first byte is write command and slave_id, next 2 bytes are address
 	write_list.extend(list_w_rand[block*32:(block+1)*32]) # extend array with 32 bytes of write data
