@@ -116,6 +116,7 @@ module uart_blockram_top (
   // first uart byte of data to send is an read_enable and slave_id, then requested read data will be sent
   assign send_data = (send_slave_id) ? {read_enable,slave_id} : read_data;
 
+  // led_counter will help drive the orange LEDs, which show that a USB UART access is in progress 
   always_ff @(posedge clk_27mhz, negedge rst_n_sync)
     if (~rst_n_sync)                        led_counter <= 'd0;
     else if (rx_bsy && (led_counter == '0)) led_counter <= 'd1;
