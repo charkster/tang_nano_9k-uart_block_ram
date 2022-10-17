@@ -117,7 +117,7 @@ module uart_blockram_top (
   assign send_data = (send_slave_id) ? {read_enable,slave_id} : read_data;
 
   // led_counter will help drive the orange LEDs, which show that a USB UART access is in progress
-  // 26bit counter overflows in (67,000,000)/(27,000,000) = 2.5 seconds, the 5 upper LEDs get about 0.5 seconds on-time each
+  // 26bit counter overflows in (67,000,000)/(27,000,000) = 2.5 seconds
   always_ff @(posedge clk_27mhz, negedge rst_n_sync)
     if (~rst_n_sync)                        led_counter <= 'd0;
     else if (rx_bsy && (led_counter == '0)) led_counter <= 'd1;
