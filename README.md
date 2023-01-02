@@ -3,8 +3,6 @@ UART interface to a block ram in the Tang Nano 9k FPGA. No pin connections neede
 
 Dependancies:
 
-pip3 install pyftdi
-
 pip3 install pyserial==3.4
 
 Timing Diagram:
