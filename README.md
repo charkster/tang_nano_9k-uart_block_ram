@@ -1,7 +1,7 @@
 # tang_nano_9k-uart_block_ram
 UART interface to a block ram in the Tang Nano 9k FPGA. No pin connections needed, just use the USB UART.
 
-I have updated the RTL and python to adapt to almost any FPGA board with a USB uart. I have tested this on Tang Nano, Tang Nano 9k and CMOD A7.
+I have updated the RTL and Python to adapt to almost any FPGA board with a USB uart. I have tested this on Tang Nano, Tang Nano 9k and CMOD A7.
 Each board has a unique oscillator frequency (clock input to the FPGA), unique USB UART max baudrate, unique button name and unique LED pins.
 The top-level (in this case tang_nano_9k_top.sv) will contain all the unique names and will pass parameter details to the uart_blockram_top instance.
 The python code needs to be updated to have the correct number of address bits, address bytes and baudrate.
